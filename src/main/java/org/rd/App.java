@@ -25,6 +25,23 @@ public class App
         System.out.println("n-th node from the end : "+nthNodeFromEndLengthApproachBigOLinear(ll,n));
 
         System.out.println("n-th node from the end : "+nthNodeFromEndTwoPointerApproachBigOLinear(ll,n));
+
+        System.out.println("Reverse a link list:");
+
+        Node reverseHead = reverseLinkedListIterative(ll);
+        printLL(reverseHead);
+    }
+
+    private static Node reverseLinkedListIterative(LinkedList ll) {
+       Node curr = ll.head;
+       Node prev = null;
+       while(curr!=null){
+           Node next = curr.next;
+           curr.next = prev;
+           prev = curr;
+           curr = next;
+       }
+       return prev;
     }
 
     private static int nthNodeFromEndTwoPointerApproachBigOLinear(LinkedList ll, int n) {
@@ -64,6 +81,17 @@ public class App
 
     private static void printLL(LinkedList ll) {
         Node curr = ll.head;
+        while(curr!=null){
+            if(curr.next!=null){
+                System.out.print(curr.data+"-->");
+            }else{
+                System.out.print(curr.data);
+            }
+            curr = curr.next;
+        }
+    }
+
+    private static void printLL(Node curr){
         while(curr!=null){
             if(curr.next!=null){
                 System.out.print(curr.data+"-->");
